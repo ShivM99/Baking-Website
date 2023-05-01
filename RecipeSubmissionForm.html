@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html lang="hi-IN">
+
+<head>
+<title> Recipe Submission Form </title>
+<link rel="icon" type="image/x-icon" href="Favicon.png">
+<link rel="stylesheet" href="style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(e)
+{
+$(document).on('click',"#add",function(e)
+{
+	//variable
+var newrow= '<tr> <td></td> <td><input type="text" id="ingredient" name="ingredient[]" size="30" autocomplete="on"></td> <td><input type="text" id="amount" name="amount[]" size="30" autocomplete="on"></td> <td><input type="button" id="add" value="Add" style="border:none;border-radius:5px;background-color:#33cc00;color:#ffffff;"><input type="button" id="remove" value="X" style="margin-left:10px;border:none;border-radius:5px;background-color:#ff0055;color:#ffffff;"></td> </tr>';
+	//add row in the table
+$(this).closest('tr').after(newrow);
+});
+	//remove row in the table
+$(document).on('click',"#remove",function(e)
+{
+$(this).closest('tr').remove();
+});
+});
+</script>
+<script type="text/javascript">
+function auto_grow(element)
+{
+element.style.height= "5px";
+element.style.height= (element.scrollHeight)+"px";
+}
+</script>
+</head>
+
+<body>
+<h1> <a href="file:///C:/Users/shiva/Documents/Baking/Home.html"> <img src="Logo.png" alt="A Sweet Hello" title="Click here to go to the Home page" style="width:200px;height:200px;"> </a> </h1>
+<h2 style="text-align:center;color:#000000;font-family:Times New Roman;text-decoration:underline;">Recipe Submission Form</h2>
+<form action="http://localhost/RecipeSubmissionDetails.php" method="POST" target="_blank">
+
+<b>Date of submission:</b> <input type="date" id="date" name="date">
+<br><br>
+
+<b>Choose a category**:</b> <select id="category" name="category" required>
+<option value="Muffins & Brownies"> Muffins & Brownies </option>
+<br>
+<option value="Tea-time Cakes"> Tea-time Cakes </option>
+<br>
+<option value="Cakes & Cupcakes" selected> Cakes & Cupcakes </option>
+<br>
+<option value="Frostings & Fillings"> Frostings & Fillings </option>
+<br>
+<option value="Cheesecakes"> Cheesecakes </option>
+<br>
+<option value="Cookies"> Cookies </option>
+<br>
+<option value="Pastries, Pies & Tarts"> Pastries, Pies & Tarts </option>
+<br>
+<option value="Breads"> Breads </option>
+<br>
+<option value="Ice-creams"> Ice-creams </option>
+<br>
+<option value="Other Desserts"> Other Desserts </option>
+</select>
+<br><br>
+
+<b>Name of the recipe**:</b> <input type="text" id="name" name="name" size="100" autocomplete="on" required>
+<br><br>
+
+<b>Image(s) of the recipe (if any):</b> <input type="file" id="image" name="image" multiple>
+<br><br>
+
+<b>Ingredients list**:</b>
+<br>
+<table id="table" name="table" border="1" required>
+<tr>
+	<th>S.no.</th>
+	<th>Ingredients</th>
+	<th>Amount (with units)</th>
+	<th>Options</th>
+</tr>
+<tr>
+	<td></td>
+	<td><input type="text" id="ingredient" name="ingredient[]" size="30" autocomplete="on"></td>
+	<td><input type="text" id="amount" name="amount[]" size="30" autocomplete="on"></td>
+	<td><input type="button" id="add" value="Add" style="border:none;border-radius:5px;background-color:#33cc00;color:#ffffff;"><input type="button" id="remove" value="X" style="margin-left:10px;border:none;border-radius:5px;background-color:#ff0055;color:#ffffff;"></td>
+</tr>
+</table>
+<br><br>
+
+<b>Baking instructions**:</b>
+<br>
+<small><b>Preheat at:</b></small> <input type="text" id="preheattemp" name="preheattemp" autocomplete="on" placeholder="Enter the preheat temp"> <small>for</small> <input type="text" id="preheattime" name="preheattime" autocomplete="on" placeholder="Enter the preheat time">
+<br>
+<small><b>Bake at:</b></small> <input type="text" id="baketemp" name="baketemp" autocomplete="on" placeholder="Enter the bake temp"> <small>for</small> <input type="text" id="baketime" name="baketime" autocomplete="on" placeholder="Enter the bake time">
+<br><br>
+
+<b>Steps:</b>
+<br>
+<textarea id="steps" name="steps" rows="10" cols="50" onkeypress="auto_grow(this)" onkeyup="auto_grow(this)" autocomplete="on" placeholder="Enter the steps here..."></textarea>
+<br><br>
+
+<b>Additional notes:</b>
+<br>
+<textarea id="notes" name="notes" rows="10" cols="50" onkeypress="auto_grow(this)" onkeyup="auto_grow(this)" autocomplete="on" placeholder="Enter additional points here..."></textarea>
+<br><br>
+
+<b>Password**:</b> <input type="password" id="password" name="password" placeholder="...to activate 'Submit' button" required>
+<br><br>
+
+<input type="reset" value="Reset the form" onclick="alert('Are you sure you want to reset the form?')" style="border:none;border-radius:5px;background-color:#0086b3;color:#ffffff;">
+<input type="submit" id="submit" value="Submit the form"  onclick="alert('Are you sure you want to submit the form?')" style="border:none;border-radius:5px;background-color:#0086b3;color:#ffffff;">
+<p id="demo"></p>
+</form>
+</body>
+</html>
